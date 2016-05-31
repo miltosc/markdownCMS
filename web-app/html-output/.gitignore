@@ -1,0 +1,8 @@
+# Ignore everything in this directory
+*
+# Except this file
+!.gitignore
+!README.md_019ef54f2885107f524f0ca50d8290e1.html
+!notes2.md_8215f7d24adfd2e77b7bc2406aa0a904.html
+!notes3.txt_8215f7d24adfd2e77b7bc2406aa0a904.html
+

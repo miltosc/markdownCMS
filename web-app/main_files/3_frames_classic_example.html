@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>jQuery Splitter Demo</title>
+    <meta name="Description" content="jQuery Splitter Demo"/>
+    <link rel="shortcut icon" href=""/>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="../jquery.splitter-master/js/jquery.splitter-0.14.0.js"></script>
+    <link href="../jquery.splitter-master/css/jquery.splitter.css" rel="stylesheet"/>
+    <!--[if IE]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<script>
+jQuery(function($) {
+   $('#frameset').width('100%').height(900).split({orientation:'horizontal', limit:40, position:40});
+   $('#down_frame').split({orientation:'vertical', limit:10, position:'30%'});
+});
+</script>
+</head>
+<body>
+<style>
+
+#down_frame{
+    height: 100%;
+}
+
+	
+
+
+
+</style>
+
+<div id="frameset">
+	<div id="up">
+	upppppp uppp
+	</div>	
+
+	<div id="down_frame">
+	
+		<div id="left">
+		left left left left left left left left left left left left left left left left left left left left left left left left left   
+<textarea autofocus="false" name="text" id="text" >
+</textarea>
+		</div>
+		
+		<div id="right" >
+			
+		aaaa right right right right right right right right right right right right right right right right right right right 
+			
+		</div>
+		
+	</div>
+</div>
+
+</body>
+</html>

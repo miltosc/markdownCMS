@@ -1,0 +1,89 @@
+*:focus {
+    outline: none;
+}
+
+html {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	
+	/*overflow-y: scroll;*/
+  /*overflow: -moz-scrollbars-none;
+  */
+}
+
+body {
+	background: #ddd;
+	color: #333;
+	font-family: "Ubuntu", "lucida grande", tahoma, verdana, arial, sans-serif;
+	font-size: 18px;
+    font-weight: 400;
+	height: 100%;
+	/*line-height: 24px;*/
+	margin: 0;
+	padding: 0;
+	
+	/*milt */
+	  position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /*milt */
+}
+
+
+a {
+	color: #7bd;
+	outline: none;
+	text-decoration: none;
+}
+
+a:hover {
+    color: #FFFFFF;
+}
+
+
+abbr {
+	border-bottom: 1px solid #ddd;
+	cursor: help;
+	padding: 2px 3px;
+}
+
+blockquote {
+	background: #eee;
+	margin: 0 0 10px 0;
+	padding: 10px 10px 1px 10px;
+}
+
+code {
+    color: #333;
+    font-family: "Source Code Pro", "Source Code Pro", Monaco, Andale Mono, Consolas, monospace;
+    font-size: 16px;
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Ubuntu", "lucida grande", tahoma, verdana, arial, sans-serif;
+	font-weight: normal;
+	margin: 20px 0;
+}
+
+object {
+	outline: none;
+}
+
+p {
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+table {
+	border-spacing: 0;
+}
+
+
+ul {
+	list-style-type: square;
+}
+
