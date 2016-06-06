@@ -1,12 +1,3 @@
-/* hide scrollbarrs but scroll is still working with page down etc */
-
-/*
-::-webkit-scrollbar {
-    display: none;
-}
-*/
-
-
 #up_frame {
   overflow: hidden;
   overflow-x: hidden;
@@ -14,14 +5,6 @@
 }
 
 /*simple textarea*/
-
-/*
-#text{
-overflow: hidden;
-overflow-x: hidden;
-overflow-y: scroll;
-}
-*/
 
 body {
   -webkit-font-smoothing: antialiased;
@@ -43,51 +26,25 @@ body {
   background: #222;
   color: #fff;
 }
-.button_save {
 
-  /*background: #369;*/
-  background: #C30;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  padding: 20px 0 20px 0;
-  box-sizing: border-box;
-  width: 100%;
-  font-family: "Ubuntu", "lucida grande", tahoma, verdana, arial, sans-serif;
-  font-size: 18px;
-  line-height: 20px;
-  margin: 0;
+.clear {
+  clear: both;
 }
-.button_save:hover {
-  opacity: 0.4;
-}
+
 textarea {
-  -moz-box-sizing: border-box;
-  -webkit-font-smoothing: subpixel-antialiased;
-  -webkit-box-sizing: border-box;/*black back and white fonts*/
-
-  /*
-  background: #222;
-  color: #fff;
-  */
-
-  /*white back and black fonts*/
-
   background: #fff;
   color: #222;
   border: none;
-  box-sizing: border-box;/*font-family: "Source Code Pro", Monaco, Andale Mono, Consolas, monospace;*/
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif, monospace;
+  box-sizing: border-box;
+  font-family: Source Code Pro, Consolas, Monaco, Andale Mono, monospace; /*monospaced fonts for better textarea line calculation - edit here button*/
   font-size: 13px;
   margin: 2px;
-  padding: 3px 3px 3px 3px;
   resize: none;
   vertical-align: top;
-  width: 100%;/*height: 100%;*/
-
-  /*white-space: nowrap; */
+  width: 100%;
+  height: 100%;
+  line-height: 22px;
   overflow: auto;
-  height: 93%;
 }
 
 #edit-toolbox {
@@ -128,8 +85,30 @@ textarea {
   filter: alpha(opacity=0);
 }
 
+.save {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.button_save {
+  background: #C30;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 20px 0 20px 0;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: "Ubuntu", "lucida grande", tahoma, verdana, arial, sans-serif;
+  font-size: 18px;
+  line-height: 20px;
+  margin: 0;
+}
+.button_save:hover {
+  opacity: 0.4;
+}
+
 .edit_form {
-  height: 90%;
+  height: 84%;
   display: block;
   margin: 0 2px 0 0;
   overflow: hidden;
@@ -297,4 +276,12 @@ span.atv {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff8c00', endColorstr='#ff3503', GradientType=0);
   cursor: pointer;
   cursor: hand;
+}
+
+@media only screen and (min-width: 1050px) {
+
+  .edit_form {
+  height: 86%;
+  }
+
 }
