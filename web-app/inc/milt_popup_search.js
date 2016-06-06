@@ -23,7 +23,9 @@ $(document).ready(function() {
   });
 
 /**
- * this is draft jQuery solution - click edit here button to find text in textarea and force chrome and webkit browsers to scroll at text
+ * this is draft jQuery solution --
+ * click edit here button to find text in textarea and
+ * force chrome and webkit browsers to scroll at text
  */
 
   var clicks = 0;
@@ -88,7 +90,6 @@ $(document).ready(function() {
           var char_in_line = txtarea.length / n_lines; // amount of chars for each line
           var height = Math.floor(position / char_in_line) - 20; // amount of lines in the textarea
           var scrollto = height * line_ht;
-          // var scrollto = position + 100;
           $(target).scrollTop(scrollto); // scroll to the selected line
 
           // console.log('empty lines', linesbefore); // dev testing
