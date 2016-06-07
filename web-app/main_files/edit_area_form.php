@@ -2,55 +2,50 @@
 <form action="<?echo $_SERVER['PHP_SELF'];?>" method="post" name="source_form" id="source_form"  class="edit_form">
 
 <!-- hidden fields -->
-			<input style="display:none" id="open_menu" name="open_menu" value="0"/>
-
-			<input  style="display:none" id="editor_sel_start" name="editor_sel_start" value="<?echo $editor_sel_start_str;?>"/>
-			<input  style="display:none" id="editor_sel_end" name="editor_sel_end" value="<?echo $editor_sel_end_str;?>"/>
-			<input  style="display:none" id="editor_scrollTop" name="editor_scrollTop" value="<?echo $editor_scrollTop_str;?>"/>
-			<input  style="display:none" id="editor_html_scrollTop" name="editor_html_scrollTop" value="<?echo $editor_html_scrollTop_str;?>"/>
-
-			<input  style="display:none" id="textarea_sel_start" name="textarea_sel_start" value="<?echo $textarea_sel_start_str;?>"/>
-			<input  style="display:none" id="textarea_sel_end" name="textarea_sel_end" value="<?echo $textarea_sel_end_str;?>"/>
-			<input  style="display:none" id="textarea_scrollTop" name="textarea_scrollTop" value="<?echo $textarea_scrollTop_str;?>"/>
-			<input  style="display:none" id="textarea_html_scrollTop" name="textarea_html_scrollTop" value="<?echo $textarea_html_scrollTop_str;?>"/>
-
-<input  style="display:none" id="edit_here_or_last_pos" name="edit_here_or_last"/>
-
-
-			<input style="display:none" id="processing_now_input_file" name="processing_now_input_file" value="<?echo $input_file;?>">
+  <input style="display:none" id="open_menu" name="open_menu" value="0"/>
+  <input style="display:none" id="editor_sel_start" name="editor_sel_start" value="<?echo $editor_sel_start_str;?>"/>
+  <input style="display:none" id="editor_sel_end" name="editor_sel_end" value="<?echo $editor_sel_end_str;?>"/>
+  <input style="display:none" id="editor_scrollTop" name="editor_scrollTop" value="<?echo $editor_scrollTop_str;?>"/>
+  <input style="display:none" id="editor_html_scrollTop" name="editor_html_scrollTop" value="<?echo $editor_html_scrollTop_str;?>"/>
+  <input style="display:none" id="textarea_sel_start" name="textarea_sel_start" value="<?echo $textarea_sel_start_str;?>"/>
+  <input style="display:none" id="textarea_sel_end" name="textarea_sel_end" value="<?echo $textarea_sel_end_str;?>"/>
+  <input style="display:none" id="textarea_scrollTop" name="textarea_scrollTop" value="<?echo $textarea_scrollTop_str;?>"/>
+  <input style="display:none" id="textarea_html_scrollTop" name="textarea_html_scrollTop" value="<?echo $textarea_html_scrollTop_str;?>"/>
+  <input style="display:none" id="edit_here_or_last_pos" name="edit_here_or_last"/>
+  <input style="display:none" id="processing_now_input_file" name="processing_now_input_file" value="<?echo $input_file;?>">
 
 <!--<textarea autofocus="false" name="text" id="text" style="width: 100%;line-height: 22px;overflow: auto;" wrap="off">-->
-<textarea autofocus="false" name="text" id="text" style="width: 100%; line-height: 22px;"  wrap="soft">
-<?
+<textarea autofocus="false" name="text" id="text" style="line-height: 22px;"  wrap="soft">
+<?php
 //echo $input_file;
 $file = file_get_contents($input_file, true);
 echo $file;
 ?>
 </textarea>
 
-<div style="position: absolute; bottom: 0px; width: 100%;">
-				<div style="position: relative;">
-					<button class=button_save type="submit" id=submit_button>Save and Parse (ctrl/shift)+Enter or ctrl+S</button>
-				</div>
-			</div>
+  <div class="save">
+    <div style="position: relative;">
+      <button class=button_save type="submit" id=submit_button>Save and Parse (ctrl/shift)+Enter or ctrl+S</button>
+    </div>
+  </div>
 
 </form>
 
 <div id="edit-toolbox">
 
-<form id="uploadForm" enctype="multipart/form-data">
-  <div class="insert-image">
-  <div class="insimg-title">Insert Image</div>
-    <input name="userImage" id="userImage" type="file" value="insert image" />
-    <input name="output_html_filename" id="output_html_filename" value="<?echo $output_file?>" type="hidden" />
-  </div>
-</form>
-
-<div id="confirmBox">
+  <form id="uploadForm" enctype="multipart/form-data">
+    <div class="insert-image">
+      <div class="insimg-title">Insert Image</div>
+      <input name="userImage" id="userImage" type="file" value="insert image" />
+      <input name="output_html_filename" id="output_html_filename" value="<?echo $output_file?>" type="hidden" /></div>
+  </form>
+  <div class="clear"></div>
+  <div id="confirmBox">
     <div>Toggle editor and ...</div>
-    <span class="editortoggler" onclick="javascript:document.getElementById('edit_here_or_last_pos').value='edit_here';eAL.toggle('text');">Edit here</span> |
+    <span class="editortoggler" onclick="javascript:document.getElementById('edit_here_or_last_pos').value='edit_here';eAL.toggle('text');">Edit here</span>
+    |
     <span class="editortoggler" onclick="javascript:document.getElementById('edit_here_or_last_pos').value='last_pos';eAL.toggle('text');">Go to last edit position</span>
-</div>
+  </div>
 
 </div>
 
@@ -87,7 +82,6 @@ insertAtCaret: function(myValue){
   });
 }
 });
-
 
 
 var handleFileSelect = function(evt) {
