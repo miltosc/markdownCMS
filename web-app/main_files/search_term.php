@@ -196,17 +196,6 @@ $ret .= '<br><form action="index.php" method="post" name="file_selection_form" s
 													$ret = str_replace('<hr>','</div><hr>',$ret);
 
 
-/*													
-									        $ret = str_replace('</h1>','</h1><div id=show_hide>',$ret,$replaces_count);
-									        
-									        for ($replaces_i = 1; $replaces_i <= $replaces_count; $replaces_i++) {
-									        	$ret = preg_replace('/<div id=show_hide>/', '<script>$(document).ready(function () {$("#show_hide_'.$replaces_i.'").hide();$(document).click(function(){$("#show_hide_'.$replaces_i.'").toggle();});});</script><div id=show_hide_'.$replaces_i.'>', $ret, 1);
-									        	
-   												//	$ret=str_replace('<div id=show_hide','<script>$(document).click(function(){$("show_hide_'.$replaces_i.'").toggle();});</script><div id=show_hide_'.$replaces_i.'>',$ret);
-									        }
-													$ret = str_replace('<hr>','</div><hr>',$ret);
-
-*/		
 		    
 		return $ret;
 	}//end function
