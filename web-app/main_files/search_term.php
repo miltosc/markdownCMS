@@ -57,6 +57,7 @@ $('#output').highlight('<?echo $_POST["search_term"];?>');
     global $favorites_files_r_txt;
 
 		$fp = opendir($path);
+		$H1_num=0;
 		while($f = readdir($fp)){
 			if( preg_match("#^\.+$#", $f) ) continue; // ignore symbolic links
         if ($f == "." || $f == ".." || strtolower(substr($f, strrpos($f, '.') + 1)) != 'html') continue; // ignore other than html files
@@ -94,7 +95,9 @@ if ($line_stripped!='' && !stristr($line,'<title>markdownCMS</title>') ){
 
 
 /* first i create blocks between h1 and if search string found in block i append it to results variable $ret */
-        		if (stristr($line,'<h1>')  ) {
+$H1_num++;
+        		if (stristr($line,'<h1>')  ) {								
+
         			
         			if ($search_term_found=='yes'){ //term found
         				
@@ -151,10 +154,12 @@ $ret .= '<br><form action="index.php" method="post" name="file_selection_form" s
 	        		
 	        		$tmp_section=$line;
 	        		
-        		}else{//while no <h1> found
+        		}else{//while no <h1> found        			
         			$tmp_section.=$line;
+							
+
         		}
-        		          
+
           $pattern = "/$search/";
           
 /*
@@ -168,11 +173,41 @@ $ret .= '<br><form action="index.php" method="post" name="file_selection_form" s
 */        
           $linect++;
         }//end while each line
+        			
+        						
+
+        
         fclose($fh);        
 				$total++;
 			}//end search  for match in entire file
 		}//end for each favorite file
-		closedir($fp);     
+		closedir($fp); 
+		
+		
+		
+
+									        $ret = str_replace('</h1>','</h1><div id=show_hide>',$ret,$replaces_count);
+									        
+									        for ($replaces_i = 1; $replaces_i <= $replaces_count; $replaces_i++) {
+									        	$ret = preg_replace('/<div id=show_hide>/', '<script>$(document).ready(function () {$("#show_hide_'.$replaces_i.'").hide();$(document).click(function(){$("#show_hide_'.$replaces_i.'").toggle();});});</script><div class="output" id=show_hide_'.$replaces_i.'>', $ret, 1);
+									        	
+   												//	$ret=str_replace('<div id=show_hide','<script>$(document).click(function(){$("show_hide_'.$replaces_i.'").toggle();});</script><div id=show_hide_'.$replaces_i.'>',$ret);
+									        }
+													$ret = str_replace('<hr>','</div><hr>',$ret);
+
+
+/*													
+									        $ret = str_replace('</h1>','</h1><div id=show_hide>',$ret,$replaces_count);
+									        
+									        for ($replaces_i = 1; $replaces_i <= $replaces_count; $replaces_i++) {
+									        	$ret = preg_replace('/<div id=show_hide>/', '<script>$(document).ready(function () {$("#show_hide_'.$replaces_i.'").hide();$(document).click(function(){$("#show_hide_'.$replaces_i.'").toggle();});});</script><div id=show_hide_'.$replaces_i.'>', $ret, 1);
+									        	
+   												//	$ret=str_replace('<div id=show_hide','<script>$(document).click(function(){$("show_hide_'.$replaces_i.'").toggle();});</script><div id=show_hide_'.$replaces_i.'>',$ret);
+									        }
+													$ret = str_replace('<hr>','</div><hr>',$ret);
+
+*/		
+		    
 		return $ret;
 	}//end function
 

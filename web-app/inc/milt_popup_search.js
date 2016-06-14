@@ -88,7 +88,8 @@ $(document).ready(function() {
           var linesbefore = txtarea.substring(0, position).match(/^[ \t]*$/gm).length; // this is the number of void lines before the found word
           var n_lines = sh/line_ht;//+linesbefore); // the total amount of lines
           var char_in_line = txtarea.length / n_lines; // amount of chars for each line
-          var height = Math.floor(position / char_in_line) - 20; // amount of lines in the textarea
+          var height = Math.floor(position / char_in_line) +50; // amount of lines in the textarea
+          
           var scrollto = height * line_ht;
           $(target).scrollTop(scrollto); // scroll to the selected line
 
