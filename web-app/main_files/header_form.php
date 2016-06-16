@@ -82,7 +82,7 @@ width: 600px;
 }
 
 </style>
-		<form action="<?echo $_SERVER['PHP_SELF'];?>" method="post" name="file_selection_form" style="display: inline;">
+		<form action="<?echo $_SERVER['PHP_SELF'];?>" method="post" name="file_selection_form" id="file_selection_form"  style="display: inline;">
 <div id="filelist" align=center style="display: inline-block;float:center;"><!--file list-->
 <div class="ui-widget" style="display: inline">
 <select name=inputfile id=inputfile_dropdown>

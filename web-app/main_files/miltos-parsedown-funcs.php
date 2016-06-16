@@ -49,6 +49,7 @@ if ($html_file_menu=='' && $input_file==''){
 $html_file_menu=convert_markdownfile2html($favorites_files_r[$i]);
 
 $output_file='../html-output/'.basename($favorites_files_r[$i]).'_'.md5(pathinfo($favorites_files_r[$i], PATHINFO_DIRNAME)).'.html';
+
 $html_file_menu=str_replace('#HEADER_ANCHOR_','./'.$output_file.'#HEADER_ANCHOR_',$html_file_menu);
 
 $menu_str_r[$i]=$html_file_menu;
@@ -146,6 +147,7 @@ rename($tmp_filepath, '/final/path/to/file.txt');
 // create menu
 //returns 2 values 
 function create_navigation_menu_markdown($input_string){
+	global $output_file,$input_file;
 //convert markdown to html temporarily to create menu
 $pd = new ParsedownExtra();
 $html = $pd->text($input_string);
@@ -172,9 +174,19 @@ $escape_string_for_pattern=preg_quote($heading_str_r[$i], '/');
 $pattern = '/^[#]{1}([\s|\t]*'.$escape_string_for_pattern.')[\s|\t]*$/m';
 //$replacement = '#[Top ![Go to top](../inc/arrow-top-top.png "Go to top") ](#MENU_ANCHOR_TOP_TOP)[Menu ![Go to menu](../inc/arrow-top.png "Go to menu") ](#MENU_ANCHOR_'.$anchor_str.') <a name="HEADER_ANCHOR_'.$anchor_str.'"></a> ${1}';
 
-$replacement = '#[![Go to top](../inc/arrow-top-top.png "Go to top"){.arrowstyle } ](#MENU_ANCHOR_TOP_TOP) [![Go to menu](../inc/arrow-top.png "Go to menu"){.arrowstyle } ](#MENU_ANCHOR_'.$anchor_str.') <a name="HEADER_ANCHOR_'.$anchor_str.'"></a> ${1}';
+
+$rand_str=md5(uniqid(rand(), true));
+
+$copy_link_str = '<form><input style="display:none" id="copylinktoanchor_'.$rand_str.'" value=\'<!-- begin of internal link code--><form target="_blank" action="index.php" method="post" name="file_selection_form" style="display: inline;"><input style="display:none" id="inputfile" name="inputfile" value="'.$input_file.'"/><input style="display:none" id="anchor" name="anchor" value="HEADER_ANCHOR_'.$anchor_str.'"/><input type="submit" name="btn" class="LoadFileButtonnewtab" value="'.$heading_str_r[$i].'"/></form><!-- end of internal link code-->\'><input type="button" name="copylink" class="LoadFileButtonnewtab" value="copy this section link" onclick="$(\'#copylinktoanchor_'.$rand_str.'\').show();$(\'#copylinktoanchor_'.$rand_str.'\').select();copySelectionText();$(\'#copylinktoanchor_'.$rand_str.'\').hide();"/></form>';
+
+
+
+$replacement = '#[![Go to top](../inc/arrow-top-top.png "Go to top"){.arrowstyle } ](#MENU_ANCHOR_TOP_TOP) [![Go to menu](../inc/arrow-top.png "Go to menu"){.arrowstyle } ](#MENU_ANCHOR_'.$anchor_str.') <a name="HEADER_ANCHOR_'.$anchor_str.'"></a> ${1} '.$copy_link_str.' ';
 
 $input_string = preg_replace($pattern, $replacement, $input_string);
+
+//$input_string = str_replace('</h1>', $copy_link_str, $input_string);
+//echo $input_string;exit;
 
 //for debugging
 //file_put_contents("./$i", $pattern.$input_string);

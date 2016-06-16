@@ -139,9 +139,9 @@ foreach ($tags as $tag) {
 //echo $hrefs[2];
 
 
-            $ret .= "<br><hr><h2>Found at: <span style='color:yellow'> $file_to_edit </span><br> Preview \"html only\" in new Tab : <a target='_blank' href=\"$file_full_path#".$hrefs[2]."\"><span style='color:acf;'>$file_full_path</span></a> <span style='color:#ffc;'>[$linect]</span>\n";
+            $ret .= "<br><hr><h2><br>Found at: <span style='color:yellow'> $file_to_edit </span><br> Preview \"html only\" in new Tab : <a target='_blank' href=\"$file_full_path#".$hrefs[2]."\"><span style='color:acf;'>$file_full_path</span></a> <span style='color:#ffc;'>[$linect]</span>\n";
             
-$ret .= '<br><form action="index.php" method="post" name="file_selection_form" style="display: inline;"><input style="display:none" id="inputfile" name="inputfile" value="'.$file_to_edit.'"/><input style="display:none" id="anchor" name="anchor" value="'.$hrefs[2].'"/><input style="display:none" id="search_term" name="search_term" value="'.$_POST["search_term"].'"/><br><input type="submit" name="btn" class="LoadFileButtonnewtab" value="Go here with editor in new Tab" onclick="this.form.target=\'_blank\';return true;" /><script>$( ".open-in-new-tab" ).submit();</script></form></h2><br>';
+						$ret .= '<br><form action="index.php" method="post" name="file_selection_form" style="display: inline;"><input style="display:none" id="inputfile" name="inputfile" value="'.$file_to_edit.'"/><input style="display:none" id="anchor" name="anchor" value="'.$hrefs[2].'"/><input style="display:none" id="search_term" name="search_term" value="'.$_POST["search_term"].'"/><br><input type="submit" name="btn" class="LoadFileButtonnewtab" value="Go here with editor in new Tab" onclick="this.form.target=\'_blank\';return true;" /></form></h2>';
 
 
 
@@ -185,13 +185,11 @@ $ret .= '<br><form action="index.php" method="post" name="file_selection_form" s
 		
 		
 		
-$ret = str_replace('<h1>','<h1 id=show_hide_click>',$ret,$replaces_count);
+													$ret = str_replace('<h1>','<h1 id=show_hide_click>',$ret,$replaces_count);
 									        $ret = str_replace('</h1>','</h1><div id=show_hide>',$ret,$replaces_count);
 									        
 									        for ($replaces_i = 1; $replaces_i <= $replaces_count; $replaces_i++) {
 
-
-//									        	$ret = preg_replace('/<div id=show_hide>/', '<script>$(document).ready(function () {$("#show_hide_'.$replaces_i.'").hide();$(document).click(function(){$("#show_hide_'.$replaces_i.'").toggle();});});</script><div class="output" id=show_hide_'.$replaces_i.'>', $ret, 1);
 
 									        	$ret = preg_replace('/<div id=show_hide>/', '<script>$(document).ready(function () {$("#show_hide_'.$replaces_i.'").hide();});</script><div class="output" id=show_hide_'.$replaces_i.'>', $ret, 1);
 									        	
@@ -200,7 +198,7 @@ $ret = str_replace('<h1>','<h1 id=show_hide_click>',$ret,$replaces_count);
 									        	
    												//	$ret=str_replace('<div id=show_hide','<script>$(document).click(function(){$("show_hide_'.$replaces_i.'").toggle();});</script><div id=show_hide_'.$replaces_i.'>',$ret);
 									        }
-													$ret = str_replace('<hr>','</div><hr>',$ret);
+													$ret = str_replace('<hr>','</div><br><hr>',$ret);
 
 
 		    
